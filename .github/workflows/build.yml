@@ -32,8 +32,11 @@ jobs:
         export CLANG_TRIPLE=aarch64-linux-gnu-
         export CROSS_COMPILE=aarch64-linux-gnu-
         export CROSS_COMPILE_ARM32=arm-linux-gnueabi-
-        export CROSS_COMPILE_COMPAT=arm-linux-gnueabi-
+        export CROSS_COMPILE_COMPAT=aarch64-linux-gnu-
         export LD=ld.lld
+        
+        # Desactivar LTO agresivo en el enlazador GNU para evitar el error del vDSO
+        export LDFLAGS=""
         
         # 1. Configurar la placa
         if [ -f arch/arm64/configs/merlinx_defconfig ]; then
